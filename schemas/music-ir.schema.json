@@ -2,26 +2,139 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://vmi.local/schemas/music-ir.schema.json",
   "title": "VMI Music Intelligence Representation",
-  "description": "Initial schema for loss-minimizing representation of musical audio.",
+  "description": "Loss-minimizing structured representation of musical audio.",
   "type": "object",
   "required": [
     "schema_version",
     "source",
     "audio",
-    "analysis"
+    "analysis",
+    "reconstruction"
   ],
   "properties": {
     "schema_version": {
       "type": "string"
     },
+
     "source": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "filename",
+        "format"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "codec": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number"
+        }
+      }
     },
+
     "audio": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "sample_rate": {
+          "type": "number"
+        },
+        "channels": {
+          "type": "integer"
+        },
+        "bit_depth": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "loudness": {
+          "type": "object"
+        },
+        "dynamic_range": {
+          "type": "object"
+        },
+        "spectral": {
+          "type": "object"
+        }
+      }
     },
+
     "analysis": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "tempo": {
+          "type": "object"
+        },
+        "rhythm": {
+          "type": "object"
+        },
+        "key": {
+          "type": "object"
+        },
+        "harmony": {
+          "type": "object"
+        },
+        "melody": {
+          "type": "object"
+        },
+        "bass": {
+          "type": "object"
+        },
+        "drums": {
+          "type": "object"
+        },
+        "timbre": {
+          "type": "object"
+        },
+        "vocals": {
+          "type": "object"
+        },
+        "arrangement": {
+          "type": "object"
+        },
+        "spatial": {
+          "type": "object"
+        },
+        "production": {
+          "type": "object"
+        },
+        "semantics": {
+          "type": "object"
+        }
+      }
+    },
+
+    "reconstruction": {
+      "type": "object",
+      "properties": {
+        "confidence": {
+          "type": "number"
+        },
+        "target_formats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generation_instructions": {
+          "type": "object"
+        },
+        "midi": {
+          "type": "object"
+        },
+        "musicxml": {
+          "type": "object"
+        },
+        "audio_synthesis": {
+          "type": "object"
+        }
+      }
     }
   }
 }
