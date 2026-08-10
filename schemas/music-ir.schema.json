@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vmi.local/schemas/music-ir.schema.json",
+  "title": "VMI Music Intelligence Representation",
+  "description": "Initial schema for loss-minimizing representation of musical audio.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source",
+    "audio",
+    "analysis"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "audio": {
+      "type": "object"
+    },
+    "analysis": {
+      "type": "object"
+    }
+  }
+}
