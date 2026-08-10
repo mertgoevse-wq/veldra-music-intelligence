@@ -1,0 +1,25 @@
+project:
+  name: "VMI"
+  version: "0.1"
+
+model:
+  base_model: "Qwen/Qwen3-8B"
+  training_method: "QLoRA"
+  max_sequence_length: 8192
+
+training:
+  epochs: 1
+  learning_rate: 0.0002
+  batch_size: 1
+  gradient_accumulation_steps: 16
+  warmup_ratio: 0.03
+
+dataset:
+  train: "datasets/processed/train.jsonl"
+  validation: "datasets/processed/validation.jsonl"
+
+checkpoint:
+  local_path: "/opt/ml/checkpoints"
+
+output:
+  directory: "/opt/ml/model"
