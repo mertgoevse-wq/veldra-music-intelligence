@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vmi.local/observatory/event.schema.json",
+  "title": "VMI Observatory Event",
+  "type": "object",
+  "required": [
+    "event_type",
+    "timestamp",
+    "stage",
+    "progress",
+    "payload"
+  ],
+  "properties": {
+    "event_type": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "number"
+    },
+    "stage": {
+      "type": "string"
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

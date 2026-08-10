@@ -16,6 +16,7 @@ from pathlib import Path
 
 from .features.timeline import Timeline
 from .encoding.reconstruction import ReconstructionPlan
+from .audio.signal_features import analyze_wav_signal
 
 
 class VMIAnalyzer:
@@ -31,6 +32,10 @@ class VMIAnalyzer:
         if not path.exists():
             raise FileNotFoundError(audio_path)
 
+        signal_analysis = {}
+        if path.suffix.lower() == ".wav":
+            signal_analysis = analyze_wav_signal(str(path))
+
         result = {
             "schema_version": "0.2",
 
@@ -39,7 +44,7 @@ class VMIAnalyzer:
                 "format": path.suffix.lower().lstrip("."),
             },
 
-            "audio": {},
+            "audio": signal_analysis,
 
             "analysis": {
                 "tempo": {},
